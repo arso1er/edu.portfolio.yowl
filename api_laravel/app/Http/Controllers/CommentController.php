@@ -194,4 +194,60 @@ class CommentController extends Controller
         ];
         return response($response, 200);
     }
+
+    /*
+        https://stackoverflow.com/a/5147007
+        https://stackoverflow.com/a/41887524   the max is used here to kinda sort
+    */
+    public function search(Request $request)
+    {
+        // Get params
+        $site = $request->query('site', '') ?? '';
+        $stars = $request->query('stars', '') ?? ''; // stars is min stars here
+        $sort = $request->query('sort', 'max_id desc') ?? 'max_id desc';
+
+        $stars_str = trim($stars) === "" ? "" : "HAVING rating_avg >= $stars";
+
+        // Count query
+        $countStdClass = DB::select(DB::raw("
+        Select Count(*) as total
+        From (
+            SELECT site_link, site_name, count(*) as comments_total, AVG(rating) AS rating_avg, MAX(id) AS max_id
+            FROM comments
+            WHERE site_link LIKE \"%$site%\"
+            GROUP BY site_link, site_name
+            $stars_str
+            ORDER BY $sort
+            ) As Z
+        "));
+        $count = (array) $countStdClass[0];
+
+        // $startAt; $perPage; $title; $category; $sort; $min_price; $max_price;
+        $perPage = $request->query('per_page', '10');
+        $page = $request->query('page', 1);
+        $startAt = $perPage * ($page - 1);
+        $totalPages = ceil($count['total'] / $perPage);
+
+        $comments = DB::select(DB::raw("
+            SELECT site_link, site_name, count(*) as comments_total, AVG(rating) AS rating_avg, MAX(id) AS max_id
+            FROM comments
+            WHERE site_link LIKE \"%$site%\"
+            GROUP BY site_link, site_name
+            $stars_str
+            ORDER BY $sort
+            LIMIT $startAt, $perPage
+        "));
+
+        $response = [
+            'status' => 'success',
+            'comments' => $comments,
+            'perPage' => $perPage,
+            'page' => $page,
+            'startAt' => $startAt,
+            'totalPages' => $totalPages,
+            'total' => $count['total'],
+        ];
+
+        return response($response, 200);
+    }
 }
