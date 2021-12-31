@@ -27,6 +27,7 @@ class AuthController extends Controller
             'password' => Hash::make($fields['password']),
             // 'phone' => ['required', new PhoneNumber],
             // 'picture' => ['nullable', 'image'],
+            'role' => 'user' // not needed because default role is already user, but I need this field in the response
         ]);
 
         $token = $user->createToken('mytokenkey')->plainTextToken;

@@ -1,30 +1,49 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Homer!!!!!!!</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view />
+  <q-layout view="hHh lpR fFf" class="column">
+    <Header />
+    <q-page-container>
+      <router-view />
+    </q-page-container>
+    <Footer />
+  </q-layout>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<style lang="scss">
+$child: inherit;
+
+a {
+  color: $child;
+  text-decoration: $child;
 }
 
-#nav {
-  padding: 30px;
+.yl-content {
+  max-width: 1240px;
+  margin: 0 auto;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.yl-mw6 {
+  max-width: 600px;
 }
 </style>
+
+<script>
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer";
+
+export default {
+  name: "App",
+  components: {
+    Header,
+    Footer,
+  },
+  // methods: {
+  //   logout() {
+  //     this.$store.dispatch("logout");
+  //     this.$router.push("/");
+  //   },
+  // },
+  async created() {
+    this.$store.dispatch("loadUser");
+  },
+};
+</script>
