@@ -7,13 +7,19 @@
       size="4em"
     />
     <Container style="max-width: 700px" v-if="mounted && comment">
-      <Modal v-if="showEdit" @close="toggleEdit">
+      <!-- <Modal v-if="showEdit" @close="toggleEdit"> -->
+      <q-dialog
+        v-model="showEdit"
+        transition-show="scale"
+        transition-hide="scale"
+      >
         <Edit
           @close="toggleEdit"
           :comment="comment"
           @updateClient="updateClient"
         />
-      </Modal>
+      </q-dialog>
+      <!-- </Modal> -->
       <q-card bordered>
         <div class="row items-center justify-between">
           <q-item class="q-py-md">
@@ -96,7 +102,7 @@ import Container from "@/components/Container.vue";
 import { getRatingColor } from "@/utils";
 import CommentsAPI from "@/api/comments";
 import Error404 from "@/views/Error404.vue";
-import Modal from "@/components/Modal.vue";
+// import Modal from "@/components/Modal.vue";
 import Edit from "@/components/Comments/Edit.vue";
 
 export default {
@@ -112,7 +118,7 @@ export default {
   components: {
     Container,
     Error404,
-    Modal,
+    // Modal,
     Edit,
   },
   methods: {

@@ -1,7 +1,8 @@
+/* add this to Container if using my own Modal instead of quasar dialog =>
+style="max-width: 700px; max-height: calc(100vh - 200px); overflow: auto" */
+
 <template>
-  <Container
-    style="max-width: 700px; max-height: calc(100vh - 200px); overflow: auto"
-  >
+  <Container>
     <q-card>
       <q-card-section>
         <div class="text-h6">Edit comment</div>
