@@ -1,6 +1,11 @@
 import AuthAPI from "@/api/auth";
+import CommentsAPI from "@/api/comments";
 
 export default {
+  loadEnv({ commit }) {
+    commit("loadEnv");
+    return true;
+  },
   loadUser({ commit }) {
     commit("loadUser");
     return true;
@@ -21,5 +26,11 @@ export default {
     await AuthAPI.logout();
     commit("logout");
     return true;
+  },
+
+  async createComment({ commit }, data) {
+    const res = await CommentsAPI.create(data);
+    // console.log(res);
+    return res;
   },
 };

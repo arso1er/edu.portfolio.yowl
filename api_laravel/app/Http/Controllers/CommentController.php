@@ -44,7 +44,10 @@ class CommentController extends Controller
         $totalPages = ceil($count['total'] / $perPage);
 
         $comments = DB::select(DB::raw("
-            SELECT * FROM comments
+            SELECT comments.*, users.name as userName, users.picture as userPicture
+            FROM comments
+            INNER JOIN users
+            ON comments.user_id = users.id
             WHERE site_link LIKE \"%$site%\"
             $stars_str
             $user_str
@@ -109,11 +112,13 @@ class CommentController extends Controller
      */
     public function show($id)
     {
-        $comment = Comment::where('id', $id)
-                            ->first();
+        $comment = Comment::join('users', 'comments.user_id', '=', 'users.id')
+                    ->select('comments.*', 'users.name as userName', 'users.picture as userPicture')
+                    ->where('comments.id', $id)
+                    ->first();
 
         if(!isset($comment)) {
-            return response()->json(['error' => 'Not Found'], 404);
+            return response()->json(['message' => 'Not Found'], 404);
         }
         return response([
             'status' => 'success',
@@ -134,12 +139,12 @@ class CommentController extends Controller
                             ->first();
 
         if(!isset($comment)) {
-            return response()->json(['error' => 'Not Found'], 404);
+            return response()->json(['message' => 'Not Found'], 404);
         }
 
         $user = $request->user();
         if($user->id !== $comment->user_id && $user->role !== 'admin') {
-            return response()->json(['error' => 'You are not allowed to do that!'], 403);
+            return response()->json(['message' => 'You are not allowed to do that!'], 403);
         }
 
         $fields = $request->validate([
@@ -179,12 +184,12 @@ class CommentController extends Controller
                             ->first();
 
         if(!isset($comment)) {
-            return response()->json(['error' => 'Not Found'], 404);
+            return response()->json(['message' => 'Not Found'], 404);
         }
 
         $user = $request->user();
         if($user->id !== $comment->user_id && $user->role !== 'admin') {
-            return response()->json(['error' => 'You are not allowed to do that!'], 403);
+            return response()->json(['message' => 'You are not allowed to do that!'], 403);
         }
 
         Comment::where('id', $id)->delete();

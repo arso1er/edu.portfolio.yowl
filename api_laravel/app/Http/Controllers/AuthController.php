@@ -17,18 +17,28 @@ class AuthController extends Controller
             'login' => ['required', 'string', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'max:255', 'confirmed'],
             // 'phone' => ['required', new PhoneNumber],
-            // 'picture' => ['nullable', 'image'],
+            'picture' => ['nullable', 'image', 'max:512'],
         ]);
 
-        $user = User::create([
+        $userData = [
             'name' => $fields['name'],
             'email' => $fields['email'],
             'login' => $fields['login'],
             'password' => Hash::make($fields['password']),
-            // 'phone' => ['required', new PhoneNumber],
-            // 'picture' => ['nullable', 'image'],
             'role' => 'user' // not needed because default role is already user, but I need this field in the response
-        ]);
+        ];
+
+        if($request->hasfile('picture')) {
+            $file = $request->file('picture');
+            $newPicName = 'user-' . time() . "." . $file->extension();
+            $file->move(public_path('images/users'), $newPicName);
+            $pictureArray = ['picture' => "/images/users/$newPicName"];
+        }
+
+        $user = User::create(array_merge(
+            $userData,
+            $pictureArray ?? ['picture' => "/images/user-default.png"]
+        ));
 
         $token = $user->createToken('mytokenkey')->plainTextToken;
 

@@ -10,4 +10,9 @@ export default {
     state.user = null;
     localStorage.removeItem("user");
   },
+  loadEnv(state) {
+    state.env = {
+      apiBaseUrl: process.env.VUE_APP_API_BASEURL,
+    };
+  },
 };

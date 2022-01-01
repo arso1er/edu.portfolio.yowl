@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +35,4 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/comments', [CommentController::class, 'index']);
 Route::get('/comments/search', [CommentController::class, 'search']);
 Route::get('/comments/{id}', [CommentController::class, 'show']);
+Route::get('/users/{id}', [UserController::class, 'show']);

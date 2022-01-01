@@ -21,15 +21,32 @@ const routes = [
     name: "Login",
     component: () => import("../views/Login.vue"),
   },
-  // {
-  //   path: "/about",
-  //   name: "About",
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () =>
-  //     import(/* webpackChunkName: "about" */ "../views/About.vue"),
-  // },
+  {
+    path: "/users/:id",
+    name: "UserComments",
+    component: () => import("../views/Comments/UserComments.vue"),
+  },
+  {
+    path: "/comments/add",
+    name: "AddComment",
+    component: () => import("../views/Comments/AddComment.vue"),
+  },
+  {
+    path: "/comments/:id",
+    name: "ShowComment",
+    component: () => import("../views/Comments/ShowComment.vue"),
+  },
+  {
+    path: "/sites/:link",
+    name: "ShowSite",
+    component: () => import("../views/Comments/ShowComment.vue"),
+  },
+  // Always leave this as last one,
+  // but you can also remove it
+  {
+    path: "/:catchAll(.*)*",
+    component: () => import("../views/Error404.vue"),
+  },
 ];
 
 const router = createRouter({

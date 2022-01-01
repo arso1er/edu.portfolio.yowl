@@ -1,48 +1,57 @@
 <template>
-  <q-page padding :style-fn="resetHeight">
+  <q-page padding :style-fn="resetHeight" class="bg-secondary">
     <Container style="max-width: 700px">
-      <h3>Login</h3>
-      <form @submit.prevent="handleSubmit">
-        <q-input
-          :rules="[(val) => !!val || 'Login/Username is required']"
-          ref="loginRef"
-          v-model="login"
-          class="q-mt-sm"
-          outlined
-          label="Login/Username"
-        />
+      <q-card>
+        <q-card-section>
+          <div class="text-h6">Login</div>
+        </q-card-section>
 
-        <q-input
-          :rules="[(val) => !!val || 'Password is required']"
-          type="password"
-          ref="passwordRef"
-          v-model="password"
-          class="q-mt-sm"
-          outlined
-          label="Password"
-        />
+        <q-separator inset />
 
-        <div class="q-mt-md">
-          <q-btn color="grey" to="/" type="reset" :disable="submitting">
-            Cancel
-          </q-btn>
-          <q-btn
-            class="q-ml-sm"
-            color="positive"
-            type="submit"
-            :disable="submitting"
-          >
-            <q-spinner
-              v-if="submitting"
-              class="q-mr-sm"
-              color="white"
-              size="1em"
-              :thickness="3"
+        <q-card-section>
+          <form @submit.prevent="handleSubmit">
+            <q-input
+              :rules="[(val) => !!val || 'Login/Username is required']"
+              ref="loginRef"
+              v-model="login"
+              class="q-mt-sm"
+              outlined
+              label="Login/Username"
             />
-            Login
-          </q-btn>
-        </div>
-      </form>
+
+            <q-input
+              :rules="[(val) => !!val || 'Password is required']"
+              type="password"
+              ref="passwordRef"
+              v-model="password"
+              class="q-mt-sm"
+              outlined
+              label="Password"
+            />
+
+            <div class="q-mt-md">
+              <q-btn color="grey" to="/" type="reset" :disable="submitting">
+                Cancel
+              </q-btn>
+              <q-btn
+                class="q-ml-sm"
+                color="positive"
+                type="submit"
+                :disable="submitting"
+              >
+                <q-spinner
+                  v-if="submitting"
+                  class="q-mr-sm"
+                  color="white"
+                  size="1em"
+                  :thickness="3"
+                />
+                Login
+              </q-btn>
+            </div>
+          </form>
+        </q-card-section>
+      </q-card>
     </Container>
   </q-page>
 </template>
@@ -63,8 +72,8 @@ export default {
     Container,
   },
   methods: {
-    resetHeight() {
-      return { minHeight: "auto" };
+    resetHeight(offset) {
+      return { minHeight: `calc(100vh - ${(offset || 0) + 70}px)` };
     },
     async handleSubmit() {
       this.$refs.loginRef.validate();

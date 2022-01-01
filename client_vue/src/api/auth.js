@@ -1,18 +1,18 @@
 import axios from "axios";
 import getToken from "./token";
+import config from "./config";
 
-// https://serversideup.net/build-an-api-wrapper-with-vuejs-axios/
-const apiBaseURL = "http://127.0.0.1:8001/api";
+const { apiBaseURL } = config;
 
 export default {
   async register(data) {
     const res = await axios({
       method: "POST",
       url: `${apiBaseURL}/register`,
-      data: new URLSearchParams(data),
+      data,
       headers: {
         Accept: "application/json",
-        "content-type": "application/x-www-form-urlencoded",
+        "content-type": "multipart/form-data",
       },
     });
 

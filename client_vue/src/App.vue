@@ -15,6 +15,9 @@ a {
   color: $child;
   text-decoration: $child;
 }
+a.yl-lu:hover {
+  text-decoration: underline;
+}
 
 .yl-content {
   max-width: 1240px;
@@ -44,6 +47,7 @@ export default {
   // },
   async created() {
     this.$store.dispatch("loadUser");
+    this.$store.dispatch("loadEnv");
   },
 };
 </script>

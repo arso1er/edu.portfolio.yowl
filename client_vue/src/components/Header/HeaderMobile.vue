@@ -19,7 +19,9 @@
           <template v-slot:label>
             <div class="row items-center no-wrap">
               <q-avatar size="24px" class="q-mr-sm">
-                <img src="https://cdn.quasar.dev/img/avatar2.jpg" />
+                <img
+                  :src="$store.state.env.apiBaseUrl + $store.state.user.picture"
+                />
               </q-avatar>
               <div class="text-center text-capitalize">{{ shortUserName }}</div>
             </div>
@@ -27,12 +29,21 @@
           <q-list>
             <q-item clickable v-close-popup tabindex="0">
               <q-item-section>
-                <q-item-label>Add review</q-item-label>
+                <router-link to="/comments/add">
+                  <q-item-label>Add comment</q-item-label>
+                </router-link>
               </q-item-section>
             </q-item>
             <q-item clickable v-close-popup tabindex="0">
               <q-item-section>
-                <q-item-label>My reviews</q-item-label>
+                <router-link
+                  :to="{
+                    name: 'UserComments',
+                    params: { id: $store.state.user.id },
+                  }"
+                >
+                  <q-item-label>My comments</q-item-label>
+                </router-link>
               </q-item-section>
             </q-item>
             <q-item clickable v-close-popup tabindex="0">
