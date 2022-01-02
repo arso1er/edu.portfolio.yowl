@@ -8,3 +8,5 @@ COPY ./api_laravel /app
 
 CMD php artisan serve --host=0.0.0.0 --port=8001
 EXPOSE 8001
+
+# https://stackoverflow.com/a/59664416   Laravel - What steps should one take to make a Laravel app ready for production mode

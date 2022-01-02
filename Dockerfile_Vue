@@ -6,4 +6,10 @@ COPY ./client_vue /app
 # RUN yarn install # Not needed because docker at first "executes" Dockerfile (until CMD command) after that mount volumes. https://stackoverflow.com/a/48810282
 
 EXPOSE 8080
-CMD yarn serve --host=0.0.0.0 --port=8080
+# https://stackoverflow.com/a/65030142
+# CMD yarn serve --host=0.0.0.0 --port=8080
+# CMD yarn serve:prod --host=0.0.0.0 --port=8080
+
+# ARG mode="dev"
+# RUN echo "ARGS is ${mode}"
+CMD yarn serve:${mode} --host=0.0.0.0 --port=8080

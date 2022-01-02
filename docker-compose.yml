@@ -55,6 +55,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile_Vue
+      # args:
+      #   - mode
+    environment:
+      mode: ${mode:-dev}
     container_name: yowl_vuejs
     volumes:
       - ./client_vue:/app
@@ -62,3 +66,7 @@ services:
       - "8080:8080"
     networks:
       - yowl
+# https://docs.docker.com/compose/environment-variables/   https://keyes.ie/docker-compose-default-environment-variables/
+# https://stackoverflow.com/a/50991623
+# https://docs.docker.com/compose/compose-file/compose-file-v3/#args
+# https://stackoverflow.com/a/49655913
