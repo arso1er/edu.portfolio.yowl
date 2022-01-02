@@ -38,12 +38,15 @@
             </q-item>
 
             <q-item class="q-pb-none" style="min-height: auto">
-              <router-link class="text-bold" :to="`/users/${comment.user_id}`">
+              <router-link
+                class="text-bold yl-lu"
+                :to="`/users/${comment.user_id}`"
+              >
                 {{ comment.userName }}
               </router-link>
               &nbsp; <span class="text-grey">reviewed</span> &nbsp;
               <router-link
-                class="text-bold"
+                class="text-bold yl-lu"
                 :to="`/sites/${comment.site_link}`"
               >
                 {{ comment.site_name }}

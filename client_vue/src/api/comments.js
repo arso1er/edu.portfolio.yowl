@@ -19,8 +19,8 @@ export default {
         stars: stars || "",
         user: user || "",
         sort: sort || "",
-        page,
-        per_page,
+        page: page || 1,
+        per_page: per_page || 10,
       },
     });
     // console.log(res.data);
@@ -70,6 +70,26 @@ export default {
       headers: {
         Accept: "application/json",
         Authorization: `Bearer ${getToken()}`,
+      },
+    });
+    // console.log(res.data);
+    return res.data;
+  },
+  async search(params) {
+    const { site, stars, sort, page, per_page } = params;
+
+    const res = await axios({
+      method: "GET",
+      url: `${apiBaseURL}/comments/search`,
+      headers: {
+        Accept: "application/json",
+      },
+      params: {
+        site: site || "",
+        stars: stars || "",
+        sort: sort || "",
+        page: page || 1,
+        per_page: per_page || 10,
       },
     });
     // console.log(res.data);

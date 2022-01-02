@@ -31,7 +31,7 @@
 
             <q-item-section>
               <q-item-label class="text-bold">
-                <router-link :to="`/users/${comment.user_id}`">
+                <router-link :to="`/users/${comment.user_id}`" class="yl-lu">
                   {{ comment.userName }}
                 </router-link>
               </q-item-label>
@@ -39,7 +39,7 @@
                 Review of
                 <router-link
                   :to="`/sites/${comment.site_link}`"
-                  class="text-bold"
+                  class="text-bold yl-lu"
                 >
                   {{ comment.site_name }}
                 </router-link>
@@ -49,8 +49,9 @@
           <div
             class="q-px-md"
             v-if="
-              $store.state.user.id === comment.user_id ||
-              $store.state.user.role === 'admin'
+              $store.state.user &&
+              ($store.state.user.id === comment.user_id ||
+                $store.state.user.role === 'admin')
             "
           >
             <q-btn

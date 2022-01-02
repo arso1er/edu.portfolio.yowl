@@ -25,12 +25,14 @@ class CommentController extends Controller
 
         $stars_str = trim($stars) === "" ? "" : "AND rating IN ($stars)";
         $user_str = trim($user) === "" ? "" : "AND user_id = $user";
-        // var_dump($stars_str);  // OR site_name LIKE \"%$site%\"
+        // var_dump($stars_str);
 
         // Count query
+        // https://stackoverflow.com/questions/50105417/combining-two-where-statements
         $countStdClass = DB::select(DB::raw("
             SELECT COUNT(*) as total FROM comments
-            WHERE site_link LIKE \"%$site%\"
+            WHERE 
+                (site_link LIKE \"%$site%\" OR site_name LIKE \"%$site%\")
             $stars_str
             $user_str
             ORDER BY $sort
@@ -38,17 +40,18 @@ class CommentController extends Controller
         $count = (array) $countStdClass[0];
 
         // $startAt; $perPage; $title; $category; $sort; $min_price; $max_price;
-        $perPage = $request->query('per_page', '10');
-        $page = $request->query('page', 1);
+        $perPage = $request->query('per_page', '10') ?? '10';
+        $page = $request->query('page', 1) ?? 1;
         $startAt = $perPage * ($page - 1);
-        $totalPages = ceil($count['total'] / $perPage);
+        $totalPages = ceil($count['total'] / ($perPage == 0 ? 10 : $perPage));
 
         $comments = DB::select(DB::raw("
             SELECT comments.*, users.name as userName, users.picture as userPicture
             FROM comments
             INNER JOIN users
             ON comments.user_id = users.id
-            WHERE site_link LIKE \"%$site%\"
+            WHERE
+                (site_link LIKE \"%$site%\" OR site_name LIKE \"%$site%\")
             $stars_str
             $user_str
             ORDER BY $sort
@@ -219,7 +222,8 @@ class CommentController extends Controller
         From (
             SELECT site_link, site_name, count(*) as comments_total, AVG(rating) AS rating_avg, MAX(id) AS max_id
             FROM comments
-            WHERE site_link LIKE \"%$site%\"
+            WHERE
+                (site_link LIKE \"%$site%\" OR site_name LIKE \"%$site%\")
             GROUP BY site_link, site_name
             $stars_str
             ORDER BY $sort
@@ -228,15 +232,16 @@ class CommentController extends Controller
         $count = (array) $countStdClass[0];
 
         // $startAt; $perPage; $title; $category; $sort; $min_price; $max_price;
-        $perPage = $request->query('per_page', '10');
-        $page = $request->query('page', 1);
+        $perPage = $request->query('per_page', '10') ?? '10';
+        $page = $request->query('page', 1) ?? 1;
         $startAt = $perPage * ($page - 1);
-        $totalPages = ceil($count['total'] / $perPage);
+        $totalPages = ceil($count['total'] / ($perPage == 0 ? 10 : $perPage));
 
         $comments = DB::select(DB::raw("
             SELECT site_link, site_name, count(*) as comments_total, AVG(rating) AS rating_avg, MAX(id) AS max_id
             FROM comments
-            WHERE site_link LIKE \"%$site%\"
+            WHERE
+                (site_link LIKE \"%$site%\" OR site_name LIKE \"%$site%\")
             GROUP BY site_link, site_name
             $stars_str
             ORDER BY $sort

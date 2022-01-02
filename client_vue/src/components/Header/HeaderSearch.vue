@@ -38,5 +38,11 @@ export default {
       default: () => false,
     },
   },
+  methods: {
+    handleSubmit() {
+      this.$router.push(`/search?site=${this.text}`);
+      document.activeElement.blur();
+    },
+  },
 };
 </script>

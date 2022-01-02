@@ -37,9 +37,14 @@ const routes = [
     component: () => import("../views/Comments/ShowComment.vue"),
   },
   {
+    path: "/search",
+    name: "Search",
+    component: () => import("../views/Search.vue"),
+  },
+  {
     path: "/sites/:link",
     name: "ShowSite",
-    component: () => import("../views/Comments/ShowComment.vue"),
+    component: () => import("../views/Comments/ShowSite.vue"),
   },
   // Always leave this as last one,
   // but you can also remove it

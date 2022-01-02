@@ -5,7 +5,10 @@
       v-for="i in pagesNumsArray"
       :key="i"
     >
-      <router-link :to="{ path: link, query: { page: i } }" v-if="i !== page">
+      <router-link
+        :to="{ path: link, query: { ...query, page: i } }"
+        v-if="i !== page"
+      >
         <q-btn flat :label="i" color="" />
       </router-link>
       <q-btn v-else :label="i" color="primary" />
@@ -36,6 +39,10 @@ export default {
     link: {
       type: String,
       default: () => "",
+    },
+    query: {
+      type: Object,
+      default: () => {},
     },
   },
   computed: {

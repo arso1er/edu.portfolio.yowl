@@ -279,5 +279,10 @@ export default {
       }
     },
   },
+  mounted() {
+    this.site_link = this.$route.query.site_link || "";
+    this.site_name = this.$route.query.site_name || "";
+    this.rating = +this.$route.query.rating || 0;
+  },
 };
 </script>

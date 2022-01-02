@@ -30,7 +30,7 @@
             Comment on
             <router-link
               :to="`/sites/${comment.site_link}`"
-              class="text-bold"
+              class="text-bold yl-lu"
               >{{ comment.site_name }}</router-link
             >
           </div>
@@ -52,7 +52,7 @@
         <q-card-section>
           <router-link
             :to="`/comments/${comment.id}`"
-            class="text-bold q-pb-sm"
+            class="text-bold q-pb-sm yl-lu"
           >
             {{ comment.title }}
           </router-link>
