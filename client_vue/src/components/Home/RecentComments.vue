@@ -98,12 +98,16 @@ export default {
     },
   },
   async mounted() {
-    const res = await CommentsAPI.index({
-      per_page: 8,
-    });
-    this.comments = res.comments;
-    this.mounted = true;
-    // console.log(this.comments);
+    try {
+      const res = await CommentsAPI.index({
+        per_page: 8,
+      });
+      this.comments = res.comments;
+      this.mounted = true;
+      // console.log(this.comments);
+    } catch (error) {
+      this.mounted = true;
+    }
   },
 };
 </script>

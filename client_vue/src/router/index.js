@@ -46,6 +46,11 @@ const routes = [
     name: "ShowSite",
     component: () => import("../views/Comments/ShowSite.vue"),
   },
+  {
+    path: "/my-profile",
+    name: "Profile",
+    component: () => import("../views/Profile.vue"),
+  },
   // Always leave this as last one,
   // but you can also remove it
   {
