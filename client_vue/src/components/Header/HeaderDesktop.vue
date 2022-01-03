@@ -49,7 +49,9 @@
             </q-item>
             <q-item clickable v-close-popup tabindex="0">
               <q-item-section>
-                <q-item-label>My settings</q-item-label>
+                <router-link to="/my-profile">
+                  <q-item-label>My profile</q-item-label>
+                </router-link>
               </q-item-section>
             </q-item>
             <q-item clickable v-close-popup tabindex="0" @click="logout">

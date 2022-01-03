@@ -23,7 +23,11 @@ export default {
     return user;
   },
   async logout({ commit }) {
-    await AuthAPI.logout();
+    try {
+      await AuthAPI.logout();
+    } catch (error) {
+      // Silent fail
+    }
     commit("logout");
     return true;
   },
