@@ -87,6 +87,7 @@ class UserController extends Controller
             'login' => ['required', 'string', 'max:255', 'unique:users,login,' .$id],
             'password' => ['nullable', 'string', 'min:8', 'max:255', 'confirmed', 'same:password_confirmation'],
             'picture' => ['nullable', 'image', 'max:512'],
+            'role' => ['nullable', 'in:user,admin'], // https://stackoverflow.com/a/47448471
         ]);
 
         $data = [
@@ -104,7 +105,7 @@ class UserController extends Controller
             $passArray = ['password' => Hash::make( $request->input('password') )];
         }
 
-        if($currentUser->role === "admin") {
+        if($currentUser->role === "admin" && $request->input('role')) {
             $roleArray = ['role' => $request->input('role')];
         }
 

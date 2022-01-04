@@ -5,16 +5,18 @@ import getToken from "./token";
 const { apiBaseURL } = config;
 
 export default {
-  // async index() {
-  //   const res = await axios({
-  //     method: "GET",
-  //     url: apiBaseURL + "?orderby=id&order=asc",
-  //     headers: { Authorization: `Bearer ${getToken()}` },
-  //   });
-  //   // console.log(res.data);
-  //   // window.t = res.data;
-  //   return res.data;
-  // },
+  async index() {
+    const res = await axios({
+      method: "GET",
+      url: `${apiBaseURL}/users`,
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${getToken()}`,
+      },
+    });
+    // console.log(res.data);
+    return res.data;
+  },
   //   async create(data) {
   //     const res = await axios({
   //       method: "POST",

@@ -115,7 +115,7 @@
 
       <q-card class="q-mt-md">
         <q-card-section>
-          <div class="text-h6">Personal profile</div>
+          <div class="text-h6">Delete user</div>
           <div>
             When you delete your user profile, your comments are deleted as well
             and can not be restored.
@@ -317,37 +317,5 @@ export default {
       this.name = this.$store.state.user.name;
     }
   },
-  //   watch: {
-  //     // https://stackoverflow.com/a/50981093
-  //     "$route.query.page": {
-  //       handler: async function (page) {
-  //         if (this.$route.name !== "UserComments") return; // to prevent error when quitting this page.
-
-  //         this.mounted = false;
-  //         try {
-  //           const userId = this.$route.params.id;
-  //           const userRes = await UsersAPI.show(userId);
-  //           this.user = userRes.user;
-
-  //           this.page = page || 1;
-  //           const commentRes = await CommentsAPI.index({
-  //             user: userId,
-  //             page: this.page,
-  //           });
-  //           this.comments = commentRes.comments;
-  //           this.perPage = commentRes.perPage;
-  //           this.total = commentRes.total;
-  //           this.totalPages = commentRes.totalPages;
-
-  //           this.mounted = true;
-  //         } catch (error) {
-  //           // window.err = error;
-  //           this.mounted = true;
-  //         }
-  //       },
-  //       deep: true,
-  //       immediate: true,
-  //     },
-  //   },
 };
 </script>
