@@ -12,7 +12,10 @@ export default {
   },
   loadEnv(state) {
     state.env = {
-      apiBaseUrl: process.env.VUE_APP_API_BASEURL,
+      apiBaseUrl:
+        process.env.NODE_ENV === "production"
+          ? process.env.VUE_APP_API_BASEURL_PROD
+          : process.env.VUE_APP_API_BASEURL,
     };
   },
 };
