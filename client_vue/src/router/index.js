@@ -51,6 +51,16 @@ const routes = [
     name: "Profile",
     component: () => import("../views/Profile.vue"),
   },
+  {
+    path: "/dashboard/admin",
+    name: "AdminDashboard",
+    component: () => import("../views/Dashboard/AdminDashboard.vue"),
+  },
+  {
+    path: "/dashboard/admin/users",
+    name: "AdminDashboardUsers",
+    component: () => import("../views/Dashboard/AdminDashboardUsers.vue"),
+  },
   // Always leave this as last one,
   // but you can also remove it
   {

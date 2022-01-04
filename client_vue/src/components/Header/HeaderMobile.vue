@@ -53,6 +53,18 @@
                 </router-link>
               </q-item-section>
             </q-item>
+            <q-item
+              clickable
+              v-close-popup
+              tabindex="0"
+              v-if="$store.state.user.role === 'admin'"
+            >
+              <q-item-section>
+                <router-link to="/dashboard/admin">
+                  <q-item-label>Admin dashboard</q-item-label>
+                </router-link>
+              </q-item-section>
+            </q-item>
             <q-item clickable v-close-popup tabindex="0" @click="logout">
               <q-item-section>
                 <q-item-label>Log out</q-item-label>

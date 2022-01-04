@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Models\Comment;
 
 use App\Models\User;
 use Auth;
-use App\Models\Comment;
 use Illuminate\Support\Facades\Hash;
+use DB;
 
 class UserController extends Controller
 {
@@ -19,7 +20,18 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $currentUser = Auth::user();
+
+        if($currentUser->role !== 'admin') {
+            return response()->json(['message' => 'You are not allowed to do that!'], 403);
+        }
+
+        $users = User::all();
+        $response = [
+            'users' => $users,
+        ];
+
+        return response($response, 200);
     }
 
     /**
@@ -139,4 +151,43 @@ class UserController extends Controller
         ];
         return response($response, 200);
     }
+
+    public function admin()
+    {
+        $currentUser = Auth::user();
+
+        if($currentUser->role !== 'admin') {
+            return response()->json(['message' => 'You are not allowed to do that!'], 403);
+        }
+
+        $usersNum = User::count();
+
+        // https://stackoverflow.com/a/12789493
+        $commentsNums = DB::select(DB::raw("
+            SELECT count(*) AS total,
+                sum(case when rating < 3 then 1 else 0 end) AS negativeComments,
+                sum(case when rating >= 3 then 1 else 0 end) AS positiveComments
+            FROM comments;
+        "));
+
+        $sitesNum = DB::select(DB::raw("
+        Select Count(*) as total
+        From (
+            SELECT site_link, count(*) as comments_total, AVG(rating) AS rating_avg, MAX(id) AS max_id
+            FROM comments
+            GROUP BY site_link
+            ) As Z
+        "));
+
+        $response = [
+            'usersNum' => $usersNum,
+            'commentsNums' => $commentsNums[0],
+            'sitesNum' => $sitesNum[0],
+        ];
+
+        return response($response, 200);
+    }
 }
+
+
+// GROUP BY distributor_id

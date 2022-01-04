@@ -67,4 +67,16 @@ export default {
     // console.log(res.data);
     return res.data;
   },
+  async admin() {
+    const res = await axios({
+      method: "GET",
+      url: `${apiBaseURL}/admin`,
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${getToken()}`,
+      },
+    });
+    // console.log(res.data);
+    return res.data;
+  },
 };
