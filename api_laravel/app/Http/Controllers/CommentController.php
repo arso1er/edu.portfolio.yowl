@@ -163,7 +163,12 @@ class CommentController extends Controller
         ]);
 
         // Get previous comment with site_link, and use its name if exists.
-        $existingComment = Comment::where('site_link', $fields['site_link'])
+        // $existingComment = Comment::where('site_link', $fields['site_link'])
+        // https://stackoverflow.com/a/27522556
+        $existingComment = Comment::where([
+                                        ['site_link', '=', $fields['site_link']],
+                                        ['id', '!=', $id],
+                                    ])
                                     ->first();
 
         // https://stackoverflow.com/a/62099533
