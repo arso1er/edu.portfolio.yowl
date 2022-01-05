@@ -260,6 +260,9 @@ export default {
         if (error.response) {
           message = error.response.data.message || message;
         }
+        if (error.response.status === 409) {
+          this.$router.push(`/comments/${error.response.data.comment.id}`);
+        }
         this.$q.notify({
           progress: true,
           message: message,

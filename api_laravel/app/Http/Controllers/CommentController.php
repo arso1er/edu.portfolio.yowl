@@ -79,6 +79,22 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
+        $user = $request->user();
+
+        // Check if user already commented on site
+        $existingUserComment = Comment::where([
+                                            ['site_link', '=', $request->input('site_link')],
+                                            ['user_id', '=', $user->id],
+                                        ])
+                                        ->first();
+        if($existingUserComment) {
+            return response([
+                'status' => 'failure',
+                'message' => 'You have already commented that site!',
+                'comment' => $existingUserComment
+            ], 409); // https://stackoverflow.com/a/3826024
+        }
+
         $fields = $request->validate([
             'site_link' => ['required', 'string', 'max:255'],
             'site_name' => ['required', 'string', 'max:255'],
@@ -86,8 +102,6 @@ class CommentController extends Controller
             'title' => ['required', 'string', 'max:255'],
             'content' => ['required', 'string', 'min:5'],
         ]);
-
-        $user = $request->user();
 
         // Get previous comment with site_link, and use its name if exists.
         $existingComment = Comment::where('site_link', $fields['site_link'])
