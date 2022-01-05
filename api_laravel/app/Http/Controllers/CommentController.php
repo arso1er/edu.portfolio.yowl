@@ -89,9 +89,13 @@ class CommentController extends Controller
 
         $user = $request->user();
 
+        // Get previous comment with site_link, and use its name if exists.
+        $existingComment = Comment::where('site_link', $fields['site_link'])
+                                    ->first();
+
         $comment = Comment::create([
             'site_link' => $fields['site_link'],
-            'site_name' => $fields['site_name'],
+            'site_name' => $existingComment ? $existingComment->site_name : $fields['site_name'],
             'rating' => $fields['rating'],
             'title' => $fields['title'],
             'content' => $fields['content'],
@@ -157,11 +161,16 @@ class CommentController extends Controller
             'title' => ['required', 'string', 'max:255'],
             'content' => ['required', 'string', 'min:5'],
         ]);
+
+        // Get previous comment with site_link, and use its name if exists.
+        $existingComment = Comment::where('site_link', $fields['site_link'])
+                                    ->first();
+
         // https://stackoverflow.com/a/62099533
         $comment = tap(Comment::where('id', $id))
                     ->update([
                         'site_link' => $fields['site_link'],
-                        'site_name' => $fields['site_name'],
+                        'site_name' => $existingComment ? $existingComment->site_name : $fields['site_name'],
                         'rating' => $fields['rating'],
                         'title' => $fields['title'],
                         'content' => $fields['content'],

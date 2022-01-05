@@ -258,7 +258,8 @@ export default {
             },
           ],
         });
-        this.$emit("updateClient", data);
+        // console.log(res);
+        this.$emit("updateClient", res.comment);
       } catch (error) {
         let message = "The request failed.";
         // window.err = error;
