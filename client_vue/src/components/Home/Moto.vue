@@ -8,7 +8,7 @@
     <div class="yl-content text-center q-pa-lg text-bold text-h5 yl-mw6">
       <p>Make your voice heard.</p>
       <p>
-        Bazinga Yowl is a free and open review platform for all businesses and
+        YOWL App is a free and open review platform for all businesses and
         consumers. Share your experiences to help others make better decisions
         and enable businesses to improve.
       </p>
