@@ -9,11 +9,14 @@ YOWL APP is a solution from client needs. It is a web application which centrali
 ## Table of Contents
 ***
 - [YOWL APP](#yowl-app)
+- [YOWL APP is a solution from client needs. It is an web application which centralise comments about any products or services offered by all web sites.](#yowl-app-is-a-solution-from-client-needs-it-is-an-web-application-which-centralise-comments-about-any-products-or-services-offered-by-all-web-sites)
   - [Table of Contents](#table-of-contents)
   - [General info](#general-info)
+- [You can modify or delete your reviews whenever you want.](#you-can-modify-or-delete-your-reviews-whenever-you-want)
   - [Technologies](#technologies)
   - [Technical requirements](#technical-requirements)
   - [Install](#install)
+- [<<<<<<< HEAD](#-head)
   - [Dev team members ✨](#dev-team-members-)
 
 ## General info
@@ -37,6 +40,7 @@ Here are the technologies used in YOWL APP:
 * [Laravel] Version 8
 * [Vuejs] Version 3
 * [phpMyAdmin] Version 5
+* [MySQL]
 
 ## Technical requirements
 ***
