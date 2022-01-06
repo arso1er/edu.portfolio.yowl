@@ -6,7 +6,7 @@
       standout
       v-model="text"
       class="q-ml-md"
-      placeholder="Search"
+      placeholder="Search for a site"
       :autofocus="autofocus"
     >
       <template v-slot:append>
