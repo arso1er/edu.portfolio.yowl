@@ -1,0 +1,20 @@
+___Add robots.txt
+
+___Limit comment to one per user, per site
+___if prev site comment, use its name
+___protect auth routes
++on protected route, redirect with notif
++sanitize comment html on create
+___ellipsis 3 lines on home page
+_+_site name to lowercase on create (didn't do this, because not needed?)
+sql custom error
+
++In /sites/link, add filter by rating (1 to 5)
+
++add catch validation server to AddComment like register?
+___maybe silent fail on logout?
+
+
+MEMORY LEAK IN GENERATEPAGINATION (totalPages 7, currentPage 7)
+
++ALL PLUSES ARE ON HOLD FOR NOW

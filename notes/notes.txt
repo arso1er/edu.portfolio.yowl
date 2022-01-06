@@ -1,0 +1,30 @@
+https://stackoverflow.com/a/40778219   Laravel 5.1 - Checking a Database Connection
+https://stackoverflow.com/a/66034880   Connection refused when running Laravel artisan command with Docker
+
+to use Laravel commands, get in container 'docker exec -it <container name> /bin/bash' first.
+
+https://stackoverflow.com/a/30859601
+
+=> I choose to not allow logged in admin to delete or edit himself from AdminUsersDashboard (only in profile) because if allowed, have to log him out if deleted, update logged in user if edited, plus he will lock himself out of admin functions if he edits his role.
+
+// Search proto
+https://stackoverflow.com/a/5147007
+
+SELECT site_link, site_name, count(*) as "comments_total", AVG(rating) AS rating_avg, MAX(id) AS max_id
+FROM comments
+WHERE site_link LIKE "%%"
+GROUP BY site_link, site_name
+HAVING rating_avg >= 3
+ORDER BY max_id asc
+LIMIT 1, 1;
+
+
+Select Count(*)
+From (
+    SELECT site_link, site_name, count(*) as "comments_total", AVG(rating) AS rating_avg, MAX(id) AS max_id
+    FROM comments
+    WHERE site_link LIKE "%%"
+    GROUP BY site_link, site_name
+    HAVING rating_avg >= 3
+    ORDER BY max_id asc
+    ) As Z;

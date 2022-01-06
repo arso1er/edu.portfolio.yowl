@@ -1,0 +1,82 @@
+GET http://127.0.0.1:8001/api/comments?stars=&user=&site=airbnb HTTP/1.1
+Accept: application/json
+
+###
+GET http://127.0.0.1:8001/api/comments?user=&page=&site=hadou.com HTTP/1.1
+Accept: application/json
+
+###
+GET http://127.0.0.1:8001/api/comments/search?stars=&site=&per_page=&page=1 HTTP/1.1
+Accept: application/json
+
+###
+GET http://127.0.0.1:8001/api/comments/1 HTTP/1.1
+Accept: application/json
+
+###
+POST http://127.0.0.1:8001/api/comments HTTP/1.1
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer 9|MWKEo5A0qowr316IXzKfdFBkI4tVZbziezD9JSni
+
+site_link=hadou.com&site_name=josuke&rating=4&title=Good&content=Lorem
+
+###
+PUT http://127.0.0.1:8001/api/comments/2 HTTP/1.1
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer 5|AJxsU0vdeSEcOkJhcI7rNBfiUkdICiHJIFmIFf7H
+
+site_link=www.airbnb.com&site_name=Airbnb&rating=5&title=Good&content=Excellent site!!!
+
+###
+DELETE http://127.0.0.1:8001/api/comments/2 HTTP/1.1
+Accept: application/json
+Authorization: Bearer 5|AJxsU0vdeSEcOkJhcI7rNBfiUkdICiHJIFmIFf7H
+
+###
+POST http://127.0.0.1:8001/api/register HTTP/1.1
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+
+#name=Jefferson&email=jeff@gmail.com&login=jeff&password=123456789&password_confirmation=123456789
+#name=Nicaise&email=nicaise@gmail.com&login=nicaise&password=123456789&password_confirmation=123456789
+#name=Gael&email=gael@gmail.com&login=gael&password=123456789&password_confirmation=123456789
+#name=Constantin&email=constantin@gmail.com&login=constantin&password=123456789&password_confirmation=123456789
+name=Joe7&email=joe7@gmail.com&login=joe7&password=123456789&password_confirmation=123456789
+
+###
+POST http://127.0.0.1:8001/api/login HTTP/1.1
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+
+login=jeff@gmail.com&password=123456789
+# login=nicaise@gmail.com&password=123456789
+# login=test@yahoo.fr&password=123456789
+
+###
+POST http://127.0.0.1:8001/api/logout HTTP/1.1
+Accept: application/json
+Authorization: Bearer 9|MWKEo5A0qowr316IXzKfdFBkI4tVZbziezD9JSni
+
+###
+GET http://127.0.0.1:8001/api/admin HTTP/1.1
+Accept: application/json
+Authorization: Bearer 9|MWKEo5A0qowr316IXzKfdFBkI4tVZbziezD9JSni
+
+###
+GET http://127.0.0.1:8001/api/users HTTP/1.1
+Accept: application/json
+Authorization: Bearer 9|MWKEo5A0qowr316IXzKfdFBkI4tVZbziezD9JSni
+
+###
+GET http://127.0.0.1:8001/api/users/1 HTTP/1.1
+Accept: application/json
+
+###
+PUT http://127.0.0.1:8001/api/users/6 HTTP/1.1
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer 6|vu6RHM9IpH9jNcLJiQVwDO1h2rodXVKxeqyAuVD5
+
+name=Tester&login=

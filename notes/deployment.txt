@@ -1,0 +1,61 @@
+https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-ubuntu-20-04
+ssh-keygen   (id_rsa)
+cat ~/.ssh/id_rsa.pub
+ssh -i ~/.ssh/id_rsa jeff@137.184.30.116
+
+setup github from my local file in documents
+scp ~/.ssh/id_rsa jeff@137.184.30.116:~/.ssh/   =>   https://askubuntu.com/a/426881
+
+Install php
+sudo apt-get update
+sudo apt install php7.4-cli
+sudo apt install php-curl php-gd php-intl php-json php-mbstring php-xml php-zip
+
+Install composer
+
+Install docker and docker-compose (if docker-compose hangs indefinitely, https://stackoverflow.com/a/68172225)
+
+Install nvm, node, yarn
+
+git clone git@github.com:EpitechCodingAcademyPromo2022/C-DEV-160-COT-1-1-yowl-nicaise-elonmou.kakanou.git
+git fetch
+git switch jeff
+cd laravel => composer install
+cd client => yarn install
+
+
+vuejs problem after deployment 'Invalid host header' => https://stackoverflow.com/a/52431349
+laravel api sql error => run migrations to fix
+
+Keep SSH session alive   https://stackoverflow.com/a/25087194
+
+Auto start at boot   https://stackoverflow.com/a/48066454
+To add env variable (mode=prod)   https://serverfault.com/a/590732
+To see logs (err)   sudo journalctl -u docker-compose-app.service
+Use systemctl daemon-reload after err fix in service
+[Unit]
+Description=Docker Compose Application Service
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/home/jeff/C-DEV-160-COT-1-1-yowl-nicaise-elonmou.kakanou
+Environment="mode=prod"
+ExecStart=/usr/local/bin/docker-compose up -d
+ExecStop=/usr/local/bin/docker-compose down
+TimeoutStartSec=0
+
+[Install]
+WantedBy=multi-user.target
+
+
+
+
+sudo certbot --nginx -d jeffvodo.me -d yapi.jeffvodo.me -d yowl.jeffvodo.me
+
+name=Jefferson&email=jeff@gmail.com&login=jeff&password=123456789&password_confirmation=123456789
+name=Nicaise&email=nicaise@gmail.com&login=nicaise&password=123456789&password_confirmation=123456789
+name=Gael&email=gael@gmail.com&login=gael&password=123456789&password_confirmation=123456789
+name=Constantin&email=constantin@gmail.com&login=constantin&password=123456789&password_confirmation=123456789

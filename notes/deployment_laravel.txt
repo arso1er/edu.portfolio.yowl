@@ -1,0 +1,30 @@
+server {
+
+    listen 80;
+    server_name yapi.jeffvodo.me;
+
+    root /home/jeff/C-DEV-160-COT-1-1-yowl-nicaise-elonmou.kakanou/api_laravel/public;   
+    client_max_body_size 20M;
+
+    location / {
+        root /home/jeff/C-DEV-160-COT-1-1-yowl-nicaise-elonmou.kakanou/api_laravel/public;
+        try_files $uri @yowlapi;
+        expires 12M;
+        access_log off;
+    }
+    
+    location @yowlapi {
+        proxy_pass http://localhost:8001;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+
+}
+
+
+
+
+sudo ln -s /etc/nginx/sites-available/yowlapi /etc/nginx/sites-enabled/yowlapi
