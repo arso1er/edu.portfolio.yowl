@@ -1,5 +1,0 @@
-clone repo
-cd laravel && composer install
-cd vue && yarn install
-
-.env remove from laravel gitignore
