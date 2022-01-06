@@ -8,6 +8,10 @@
     <HeaderSearch />
     <div class="row">
       <div v-if="$store.state.user">
+        <router-link to="/comments/add" class="q-mr-sm">
+          <q-btn stretch flat color="white" label="Add comment" />
+        </router-link>
+
         <q-btn-dropdown stretch flat>
           <template v-slot:label>
             <div class="row items-center no-wrap">
