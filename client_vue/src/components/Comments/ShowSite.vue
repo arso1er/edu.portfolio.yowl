@@ -126,7 +126,7 @@
         :page="+page"
         :totalPages="totalPages"
         :limit="5"
-        :link="`/sites/${$route.params.link}`"
+        :link="`/sites/${encodeURIComponent($route.params.link)}`"
       />
     </Container>
     <Container style="max-width: 700px" v-if="mounted && !comments.length">

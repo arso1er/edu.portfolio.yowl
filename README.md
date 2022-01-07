@@ -26,6 +26,7 @@ Here are the technologies used in YOWL APP:
 * [Laravel] Version 8
 * [Vuejs] Version 3
 * [phpMyAdmin] Version 5
+* [MySQL]
 
 ## Technical requirements
 ***

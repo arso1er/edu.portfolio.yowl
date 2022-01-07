@@ -47,7 +47,7 @@
               &nbsp; <span class="text-grey">reviewed</span> &nbsp;
               <router-link
                 class="text-bold yl-lu"
-                :to="`/sites/${comment.site_link}`"
+                :to="`/sites/${encodeURIComponent(comment.site_link)}`"
               >
                 {{ comment.site_name }}
               </router-link>
