@@ -1,16 +1,12 @@
 # YOWL APP
 ***
-YOWL APP is a solution from client needs. It is an web application which centralise comments about any products or services offered by all web sites.
-=======
 YOWL APP is a solution from client needs. It is a web application which centralises comments about any products or services offered by all web sites.
 
 ## Table of Contents
 ***
 - [YOWL APP](#yowl-app)
-- [YOWL APP is a solution from client needs. It is an web application which centralise comments about any products or services offered by all web sites.](#yowl-app-is-a-solution-from-client-needs-it-is-an-web-application-which-centralise-comments-about-any-products-or-services-offered-by-all-web-sites)
   - [Table of Contents](#table-of-contents)
   - [General info](#general-info)
-- [You can modify or delete your reviews whenever you want.](#you-can-modify-or-delete-your-reviews-whenever-you-want)
   - [Technologies](#technologies)
   - [Technical requirements](#technical-requirements)
   - [Install](#install)
@@ -18,11 +14,6 @@ YOWL APP is a solution from client needs. It is a web application which centrali
 
 ## General info
 ***
-YOWL APP is a web application that will allow users to comment on all of the content found on theInternet. Each comment will be shared by the entire YOWL user community. The home page give you the opportunity, user or not to read the latest reviews.
-In order to make a comment, you need to be registered.
-After the registering, you need to login to make your comment on every experience you made on a web site.
-You can modify or delete your reviews whenever you want.
-=======
 YOWL APP is a web application that will allow users to comment on all of the content found on the Internet. Each comment will be shared by the entire YOWL user community. The home page gives you the opportunity, user or not to read the latest reviews.
 In order to make a comment, you need to be registered.
 After the registration, you need to login to make your comment on every experience you made on a web site.
@@ -54,7 +45,6 @@ Before installing this project, you must have ```Node.js```, ```PHP``` with its 
 5. For production mode, use ```mode=prod docker-compose up -d --build```.  
    For subsequent runs, the ```--build``` argument can be omitted.
 
-=======
 More detailed installation instructions can be found [here](documents/installation.md).
 
 ## Dev team members ✨
