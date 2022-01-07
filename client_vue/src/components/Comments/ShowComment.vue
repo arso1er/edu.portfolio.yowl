@@ -38,7 +38,7 @@
               <q-item-label>
                 Review of
                 <router-link
-                  :to="`/sites/${comment.site_link}`"
+                  :to="`/sites/${encodeURIComponent(comment.site_link)}`"
                   class="text-bold yl-lu"
                 >
                   {{ comment.site_name }}

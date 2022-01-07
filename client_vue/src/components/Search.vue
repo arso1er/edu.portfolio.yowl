@@ -17,7 +17,7 @@
       >
         <router-link
           class="row yl-lu text-bold text-h6 text-accent"
-          :to="`/sites/${comment.site_link}`"
+          :to="`/sites/${encodeURIComponent(comment.site_link)}`"
         >
           {{ comment.site_name }}&nbsp;|&nbsp;{{ comment.site_link }}
         </router-link>
