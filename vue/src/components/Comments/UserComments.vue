@@ -39,6 +39,7 @@
               size="2em"
               icon="star_border"
               icon-selected="star"
+              icon-half="star_half"
               readonly
               :modelValue="comment.rating"
               :color="getColor(comment.rating)"

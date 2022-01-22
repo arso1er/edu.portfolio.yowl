@@ -26,6 +26,7 @@
             size="2em"
             icon="star_border"
             icon-selected="star"
+            icon-half="star_half"
             readonly
             :modelValue="+comment.rating_avg"
             :color="getColor(+comment.rating_avg)"
