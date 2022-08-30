@@ -19,7 +19,6 @@ export default {
   },
   methods: {
     resetHeight(offset) {
-      // console.log(offset);
       return { minHeight: `calc(100vh - ${(offset || 0) + 70}px)` };
     },
   },

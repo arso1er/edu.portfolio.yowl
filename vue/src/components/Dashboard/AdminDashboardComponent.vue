@@ -135,7 +135,6 @@ export default {
   async mounted() {
     try {
       const res = await UsersAPI.admin();
-      // console.log(res);
       this.usersNum = res.usersNum;
       this.sitesNum = res.sitesNum.total;
       this.commentsNum = res.commentsNums.total;

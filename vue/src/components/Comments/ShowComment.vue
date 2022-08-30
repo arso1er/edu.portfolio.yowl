@@ -200,9 +200,7 @@ export default {
       const res = await CommentsAPI.show(this.$route.params.id);
       this.comment = res.comment;
       this.mounted = true;
-      //   console.log(this.comment);
     } catch (error) {
-      // window.err = error;
       this.mounted = true;
     }
   },

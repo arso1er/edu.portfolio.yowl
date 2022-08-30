@@ -25,14 +25,6 @@
           </template>
           <q-list>
             <q-item clickable v-close-popup tabindex="0">
-              <!-- <q-item-section avatar style="min-width: auto">
-                <q-avatar
-                  icon="folder"
-                  size="sm"
-                  color="secondary"
-                  text-color="white"
-                />
-              </q-item-section> -->
               <q-item-section>
                 <router-link to="/comments/add">
                   <q-item-label>Add comment</q-item-label>

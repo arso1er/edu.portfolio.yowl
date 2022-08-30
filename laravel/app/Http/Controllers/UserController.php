@@ -189,6 +189,3 @@ class UserController extends Controller
         return response($response, 200);
     }
 }
-
-
-// GROUP BY distributor_id

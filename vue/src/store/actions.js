@@ -34,7 +34,6 @@ export default {
 
   async createComment({ commit }, data) {
     const res = await CommentsAPI.create(data);
-    // console.log(res);
     return res;
   },
 };

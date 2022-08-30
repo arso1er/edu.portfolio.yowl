@@ -17,13 +17,11 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "register" */ "../views/Register.vue"),
     beforeEnter: (to, from, next) => {
-      // console.log(to);
       if (!isLoggedIn()) {
         next(); // make sure to always call next()!
       } else {
         next({
           path: "/",
-          // query: { redirect: to.fullPath },
         });
       }
     },
@@ -33,13 +31,11 @@ const routes = [
     name: "Login",
     component: () => import("../views/Login.vue"),
     beforeEnter: (to, from, next) => {
-      // console.log(to);
       if (!isLoggedIn()) {
         next(); // make sure to always call next()!
       } else {
         next({
           path: "/",
-          // query: { redirect: to.fullPath },
         });
       }
     },
@@ -54,13 +50,11 @@ const routes = [
     name: "AddComment",
     component: () => import("../views/Comments/AddComment.vue"),
     beforeEnter: (to, from, next) => {
-      // console.log(to);
       if (isLoggedIn()) {
         next(); // make sure to always call next()!
       } else {
         next({
           path: "/login",
-          // query: { redirect: to.fullPath },
         });
       }
     },
@@ -85,13 +79,11 @@ const routes = [
     name: "Profile",
     component: () => import("../views/Profile.vue"),
     beforeEnter: (to, from, next) => {
-      // console.log(to);
       if (isLoggedIn()) {
         next(); // make sure to always call next()!
       } else {
         next({
           path: "/login",
-          // query: { redirect: to.fullPath },
         });
       }
     },
@@ -101,16 +93,13 @@ const routes = [
     name: "AdminDashboard",
     component: () => import("../views/Dashboard/AdminDashboard.vue"),
     beforeEnter: (to, from, next) => {
-      // console.log(to);
       if (!isLoggedIn()) {
         next({
           path: "/login",
-          // query: { redirect: to.fullPath },
         });
       } else if (!isAdmin()) {
         next({
           path: "/",
-          // query: { redirect: to.fullPath },
         });
       } else {
         next();
@@ -122,16 +111,13 @@ const routes = [
     name: "AdminDashboardUsers",
     component: () => import("../views/Dashboard/AdminDashboardUsers.vue"),
     beforeEnter: (to, from, next) => {
-      // console.log(to);
       if (!isLoggedIn()) {
         next({
           path: "/login",
-          // query: { redirect: to.fullPath },
         });
       } else if (!isAdmin()) {
         next({
           path: "/",
-          // query: { redirect: to.fullPath },
         });
       } else {
         next();

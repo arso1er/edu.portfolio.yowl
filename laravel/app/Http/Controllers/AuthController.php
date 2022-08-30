@@ -10,13 +10,11 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
     public function register(Request $request) {
-        // return $request->name;
         $fields = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email:filter', 'max:255', 'unique:users'],
             'login' => ['required', 'string', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'max:255', 'confirmed'],
-            // 'phone' => ['required', new PhoneNumber],
             'picture' => ['nullable', 'image', 'max:512'],
         ]);
 
@@ -51,7 +49,6 @@ class AuthController extends Controller
     }
 
     public function login(Request $request) {
-        // return $request->name;
         $fields = $request->validate([
             'login' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'max:255'],

@@ -122,11 +122,8 @@ export default {
           this.total = commentRes.total;
           this.totalPages = commentRes.totalPages;
 
-          // console.log(commentRes);
-          // console.log(site);
           this.mounted = true;
         } catch (error) {
-          // window.err = error;
           this.mounted = true;
         }
       },

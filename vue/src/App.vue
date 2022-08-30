@@ -39,12 +39,6 @@ export default {
     Header,
     Footer,
   },
-  // methods: {
-  //   logout() {
-  //     this.$store.dispatch("logout");
-  //     this.$router.push("/");
-  //   },
-  // },
   async created() {
     this.$store.dispatch("loadUser");
     this.$store.dispatch("loadEnv");

@@ -36,7 +36,5 @@ $init: 0;
   margin: 100px auto;
   background: #fff;
   border-radius: 10px;
-  //   max-height: calc(100vh - 200px);
-  //   overflow: auto;
 }
 </style>

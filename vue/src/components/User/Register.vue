@@ -139,7 +139,6 @@
 
 <script>
 import Container from "@/components/Container.vue";
-// import AuthApi from "@/api/auth";
 
 export default {
   name: "RegisterComp",
@@ -180,7 +179,6 @@ export default {
       return { minHeight: `calc(100vh - ${(offset || 0) + 70}px)` };
     },
     onRejected(rejectedEntries) {
-      // console.log(rejectedEntries);
       this.$q.notify({
         type: "negative",
         message: `Please, choose an image with 512kb maximum size.`,
@@ -220,16 +218,12 @@ export default {
       if (this.picture) data.append("picture", this.picture);
 
       try {
-        // const test = await AuthApi.register(data);
-        // console.log(test);
-        // this.submitting = false;
         await this.$store.dispatch("register", data);
         this.submitting = false;
         this.$router.push(`/`);
         this.$q.notify({
           progress: true,
           message: "User created. Welcome to the YOWL community.",
-          // color: 'primary',
           type: "positive",
           actions: [
             {
@@ -243,14 +237,11 @@ export default {
         });
       } catch (error) {
         let message = "The request failed.";
-        // window.err = error;
-        // console.log(error);
         this.submitting = false;
         if (error.response) {
           message = error.response.data.message || message;
           if (error.response.data.errors) {
             const obj = error.response.data.errors;
-            // console.log(obj);
             for (const key in this.errors) {
               if (obj[key]) {
                 this.errors[key] = {
@@ -268,7 +259,6 @@ export default {
           progress: true,
           html: true,
           message: message,
-          // color: 'primary',
           type: "negative",
           timeout: 10000,
           actions: [

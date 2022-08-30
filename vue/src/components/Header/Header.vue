@@ -25,7 +25,6 @@ export default {
         this.$q.notify({
           progress: true,
           message: "You are logged out.",
-          // color: 'primary',
           type: "positive",
           actions: [
             {
@@ -49,7 +48,6 @@ export default {
           progress: true,
           message: message,
           html: true,
-          // color: 'primary',
           type: "negative",
           timeout: 10000,
           actions: [

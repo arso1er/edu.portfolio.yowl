@@ -139,13 +139,6 @@
   </q-page>
 </template>
 
-<style lang="scss" scoped>
-// .yl-mc-card {
-//   width: fit-content;
-//   margin: 0 auto;
-// }
-</style>
-
 <script>
 import Container from "@/components/Container.vue";
 import { getRatingColor } from "@/utils";
@@ -225,9 +218,7 @@ export default {
           this.avgRating = avgRes.comments[0].rating_avg;
 
           this.mounted = true;
-          // console.log(commentRes);
         } catch (error) {
-          // window.err = error;
           this.mounted = true;
         }
       },

@@ -14,23 +14,8 @@ export default {
         Authorization: `Bearer ${getToken()}`,
       },
     });
-    // console.log(res.data);
     return res.data;
   },
-  //   async create(data) {
-  //     const res = await axios({
-  //       method: "POST",
-  //       url: `${apiBaseURL}/comments`,
-  //       data: new URLSearchParams(data),
-  //       headers: {
-  //         Accept: "application/json",
-  //         "content-type": "application/x-www-form-urlencoded",
-  //         Authorization: `Bearer ${getToken()}`,
-  //       },
-  //     });
-  //     // console.log(res.data);
-  //     return res.data;
-  //   },
   async show(id) {
     const res = await axios({
       method: "GET",
@@ -39,7 +24,6 @@ export default {
         Accept: "application/json",
       },
     });
-    // console.log(res.data);
     return res.data;
   },
   async update(id, data) {
@@ -54,7 +38,6 @@ export default {
         Authorization: `Bearer ${getToken()}`,
       },
     });
-    // console.log(res.data);
     return res.data;
   },
   async delete(id) {
@@ -66,7 +49,6 @@ export default {
         Authorization: `Bearer ${getToken()}`,
       },
     });
-    // console.log(res.data);
     return res.data;
   },
   async admin() {
@@ -78,7 +60,6 @@ export default {
         Authorization: `Bearer ${getToken()}`,
       },
     });
-    // console.log(res.data);
     return res.data;
   },
 };

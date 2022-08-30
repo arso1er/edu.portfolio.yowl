@@ -47,7 +47,6 @@
 
         <div>
           <label for="role">Role</label>
-          <!-- <q-input for="role" outlined v-model="role" /> -->
           <q-select outlined v-model="role" :options="roleOptions" />
         </div>
 
@@ -202,17 +201,6 @@ export default {
           message = error.response.data.message || message;
           if (error.response.data.errors) {
             const obj = error.response.data.errors;
-            // console.log(obj);
-            // for (const key in this.errors) {
-            //   if (obj[key]) {
-            //     this.errors[key] = {
-            //       isValid: false,
-            //       message: obj[key][0],
-            //     };
-            //   } else {
-            //     this.errors[key].isValid = true;
-            //   }
-            // }
             if (obj.picture) message += `<br/> ${obj.picture[0]}`;
           }
         }
@@ -220,7 +208,6 @@ export default {
           progress: true,
           html: true,
           message: message,
-          // color: 'primary',
           type: "negative",
           timeout: 10000,
           actions: [

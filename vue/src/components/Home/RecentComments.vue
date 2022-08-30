@@ -104,7 +104,6 @@ export default {
       });
       this.comments = res.comments;
       this.mounted = true;
-      // console.log(this.comments);
     } catch (error) {
       this.mounted = true;
     }

@@ -78,14 +78,6 @@ export default {
       currentUser: {},
     };
   },
-  //   computed: {
-  //     negativeCommentsLabel() {
-  //       return +(this.negativeComments * 100).toFixed(2) + "%";
-  //     },
-  //     positiveCommentsLabel() {
-  //       return +(this.positiveComments * 100).toFixed(2) + "%";
-  //     },
-  //   },
   components: {
     Container,
     EditUser,
@@ -120,7 +112,6 @@ export default {
     try {
       const res = await UsersAPI.index();
       this.users = res.users;
-      // console.log(res);
       this.mounted = true;
     } catch (error) {
       window.err = error;

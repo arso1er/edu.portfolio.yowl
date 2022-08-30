@@ -25,7 +25,6 @@ class CommentController extends Controller
 
         $stars_str = trim($stars) === "" ? "" : "AND rating IN ($stars)";
         $user_str = trim($user) === "" ? "" : "AND user_id = $user";
-        // var_dump($stars_str);
 
         // Count query
         // https://stackoverflow.com/questions/50105417/combining-two-where-statements

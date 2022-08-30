@@ -23,7 +23,6 @@ export default {
         per_page: per_page || 10,
       },
     });
-    // console.log(res.data);
     return res.data;
   },
   async create(data) {
@@ -37,7 +36,6 @@ export default {
         Authorization: `Bearer ${getToken()}`,
       },
     });
-    // console.log(res.data);
     return res.data;
   },
   async show(id) {
@@ -46,7 +44,6 @@ export default {
       url: `${apiBaseURL}/comments/${id}`,
       headers: { Accept: "application/json" },
     });
-    // console.log(res.data);
     return res.data;
   },
   async update(id, data) {
@@ -60,7 +57,6 @@ export default {
         Authorization: `Bearer ${getToken()}`,
       },
     });
-    // console.log(res.data);
     return res.data;
   },
   async delete(id) {
@@ -72,7 +68,6 @@ export default {
         Authorization: `Bearer ${getToken()}`,
       },
     });
-    // console.log(res.data);
     return res.data;
   },
   async search(params) {
@@ -92,7 +87,6 @@ export default {
         per_page: per_page || 10,
       },
     });
-    // console.log(res.data);
     return res.data;
   },
 };

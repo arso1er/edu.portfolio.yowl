@@ -77,19 +77,11 @@ export default {
     },
     async handleSubmit() {
       this.$refs.loginRef.validate();
-      //   this.$refs.emailRef.validate();
       this.$refs.passwordRef.validate();
 
-      if (
-        this.$refs.loginRef.hasError ||
-        // this.$refs.emailRef.hasError ||
-        this.$refs.passwordRef.hasError
-      ) {
+      if (this.$refs.loginRef.hasError || this.$refs.passwordRef.hasError) {
         return false;
       }
-
-      // console.log(this.username);
-      // console.log(this.password);
 
       this.submitting = true;
 
@@ -105,7 +97,6 @@ export default {
         this.$q.notify({
           progress: true,
           message: "You are logged in",
-          // color: 'primary',
           type: "positive",
           actions: [
             {
@@ -119,8 +110,6 @@ export default {
         });
       } catch (error) {
         let message = "The request failed.";
-        // window.err = error;
-        // console.log(error);
         this.submitting = false;
         if (error.response) {
           message = error.response.data.message || message;
@@ -129,7 +118,6 @@ export default {
           progress: true,
           message: message,
           html: true,
-          // color: 'primary',
           type: "negative",
           timeout: 10000,
           actions: [
